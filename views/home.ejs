@@ -8,8 +8,8 @@
     Hello world
     <div class="container">
       <div class="div-like" style="width: 100px">
-        <a href="#" style="float: right"><%=girl.dislike%>  Like</a>
-        <a href="#"><%=girl.like%> Dislike</a>
+        <a href="/dislike/<%=girl.id%>" style="float: right"><%=girl.dislike%>  Dislike</a>
+        <a href="/like/<%=girl.id%>"><%=girl.like%> Like</a>
       </div>
       <img src="<%=girl.hinh%>" width="100px">
       <div class="div-next" style="width: 100px">

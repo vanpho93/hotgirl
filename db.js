@@ -44,8 +44,20 @@ function hitLike(id, cb){
   })
 }
 
+function hitDislike(id, cb){
+  sql = `UPDATE "Hotgirl" SET "dislike" = "dislike" + 1 WHERE id = ${id}`;
+  queryDB(sql, function(err, result){
+    if(result.rowCount == 1){
+      cb(1);
+    }else{
+      cb(2);
+    }
+  })
+}
+
 module.exports.getHotgirlInfo = getHotgirlInfo;
 module.exports.hitLike = hitLike;
+module.exports.hitDislike = hitDislike;
 // getHotgirlInfo(2, function(girl){
 //   console.log(girl);
 // })
