@@ -6,7 +6,7 @@ var config = {
   host: 'localhost',
   port: 5432,
   max: 10,
-  idleTimeoutMillies: 30000
+  idleTimeoutMillies: 1000
 }
 
 var pool = new pg.Pool(config);
@@ -16,6 +16,7 @@ function queryDB(sql, cb){
     if(err){
       console.log('LOI KET NOI ' + err);
     }else{
+      done();
       client.query(sql, cb);
     }
   });
@@ -32,8 +33,19 @@ function getHotgirlInfo(id, cb){
   });
 }
 
-module.exports = getHotgirlInfo;
+function hitLike(id, cb){
+  sql = `UPDATE "Hotgirl" SET "like" = "like" + 1 WHERE id = ${id}`;
+  queryDB(sql, function(err, result){
+    if(result.rowCount == 1){
+      cb(1);
+    }else{
+      cb(2);
+    }
+  })
+}
 
+module.exports.getHotgirlInfo = getHotgirlInfo;
+module.exports.hitLike = hitLike;
 // getHotgirlInfo(2, function(girl){
 //   console.log(girl);
 // })

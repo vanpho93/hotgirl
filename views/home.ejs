@@ -8,13 +8,13 @@
     Hello world
     <div class="container">
       <div class="div-like" style="width: 100px">
-        <a href="#" style="float: right">5 Like</a>
-        <a href="#">1 Dislike</a>
+        <a href="#" style="float: right"><%=girl.dislike%>  Like</a>
+        <a href="#"><%=girl.like%> Dislike</a>
       </div>
-      <img src="1.jpg" width="100px">
+      <img src="<%=girl.hinh%>" width="100px">
       <div class="div-next" style="width: 100px">
-        <a href="#">Next</a>
-        <a href="#" style="float: right">Prev</a>
+        <a href="/<%=girl.id + 1%>">Next</a>
+        <a href="/<%=girl.id - 1%>" style="float: right">Prev</a>
       </div>
     </div>
   </body>
