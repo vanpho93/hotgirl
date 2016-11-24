@@ -30,3 +30,16 @@ module.exports = {
     ]
   }
 }
+
+
+npm install css-loader script-loader style-loader jquery foundation-sites
+--save-dev
+
+activeClassName = "active" activeStyle = {{}}
+
+.page-title{
+  margin-top: 2.5rem,
+  margin-bottom: 2.5rem
+}
+
+require('style!css!applicationStyle')
