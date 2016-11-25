@@ -27,9 +27,14 @@ pool.on('error', function(err, client){
 });
 
 function getHotgirlInfo(id, cb){
-  sql = `SELECT * FROM "Hotgirl" WHERE id = ${id}`
+  sql = `SELECT * FROM "Hotgirl" WHERE id = ${id}`;
+  console.log(sql);
   queryDB(sql, function(err, result){
-    cb(result.rows[0]);
+    if(err){
+      console.log(err);
+    }else{
+      cb(result.rows[0]);
+    }
   });
 }
 

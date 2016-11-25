@@ -11,10 +11,10 @@
         <a href="/dislike/<%=girl.id%>" style="float: right"><%=girl.dislike%>  Dislike</a>
         <a href="/like/<%=girl.id%>"><%=girl.like%> Like</a>
       </div>
-      <img src="<%=girl.hinh%>" width="100px">
+      <img src="../<%=girl.hinh%>" width="100px">
       <div class="div-next" style="width: 100px">
-        <a href="/<%=girl.id + 1%>">Next</a>
-        <a href="/<%=girl.id - 1%>" style="float: right">Prev</a>
+        <a href="/list/<%=girl.id + 1%>">Next</a>
+        <a href="/list/<%=girl.id - 1%>" style="float: right">Prev</a>
       </div>
     </div>
   </body>

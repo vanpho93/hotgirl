@@ -17,7 +17,7 @@ app.get('/', function(req, res){
   res.redirect('/1');
 });
 
-app.get('/:id', function(req, res){
+app.get('/list/:id', function(req, res){
   getHotgirlInfo(req.params.id, function(girl){
     if(girl == undefined){
       res.redirect('/1');
