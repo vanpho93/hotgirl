@@ -3,18 +3,54 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <script src="../jquery-3.1.1.min.js" charset="utf-8"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+
+        setInterval(function(){
+          var id = $('#girl-id').val();
+          $.get('/info/'+id, function(data){
+              $('#like').html(data.like + ' Like');
+              $('#dislike').html(data.dislike + ' dislike');
+          });
+        }, 1000);
+
+        $('#dislike').click(function(){
+          var id = $('#girl-id').val();
+          $.get('/dislike/'+id, function(data){
+              $('#dislike').html(data + ' Dislike');
+          });
+        });
+
+        $('#like').click(function(){
+          var id = $('#girl-id').val();
+          $.get('/like/'+id, function(data){
+              $('#like').html(data + ' Like');
+          });
+        });
+
+        $('#sendPost').click(function(){
+          $.post('/xuly', {name: 'Pho', tuoi: 18}, function(data) {
+            alert(data);
+          })
+        });
+
+      });
+    </script>
   </head>
   <body>
     Hello world
     <div class="container">
       <div class="div-like" style="width: 100px">
-        <a href="/dislike/<%=girl.id%>" style="float: right"><%=girl.dislike%>  Dislike</a>
-        <a href="/like/<%=girl.id%>"><%=girl.like%> Like</a>
+        <input id="girl-id" type="hidden" value="<%=girl.id%>">
+        <a id="dislike" href="#" style="float: right"><%=girl.dislike%>  Dislike</a>
+        <a id="like" href="#"><%=girl.like%> Like</a>
       </div>
       <img src="../<%=girl.hinh%>" width="100px">
       <div class="div-next" style="width: 100px">
         <a href="/list/<%=girl.id + 1%>">Next</a>
         <a href="/list/<%=girl.id - 1%>" style="float: right">Prev</a>
+        <a href="#" id="sendPost">Send Post</a>
       </div>
     </div>
   </body>
